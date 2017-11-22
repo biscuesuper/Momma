@@ -32,13 +32,6 @@ server.post('/api/messages', connector.listen());
 
 // Create bot part
 var bot = new builder.UniversalBot(connector, function (session) {
-    session.send("What do you mean \" %s \" ?", session.message.text);
-    session.send("Don't talk to your mother like this!");
-})
-
-
-/*
-var bot = new builder.UniversalBot(connector), function (session) {
     if (session.message.text) {
         switch (session.message.text.toLowerCase()) {
             case 'hello':
@@ -50,8 +43,7 @@ var bot = new builder.UniversalBot(connector), function (session) {
             default:
                 session.send("What do you mean \" %s \" ?", session.message.text);
                 break;
-            
+
         }
     }
-})
-*/
+});
