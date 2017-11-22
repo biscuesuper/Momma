@@ -1,6 +1,10 @@
-/*-----------------------------------------------------------------------------
-A simple echo bot for the Microsoft Bot Framework. 
------------------------------------------------------------------------------*/
+/* Project: Catbot 
+*  Level: Simple
+*  Name: Momma
+*  Description: "Momma" is a simple chatbot which helps young people (who just moved out of their parents house) 
+*               learn how to do some basic chores. "Momma" helps users by telling them how to cook stuff, 
+*               clean the house, wash clothes and even give some maternal advice from time to time.
+*/
 
 var restify = require('restify');
 var builder = require('botbuilder');
@@ -25,13 +29,29 @@ var connector = new builder.ChatConnector({
 // Listen for messages from users 
 server.post('/api/messages', connector.listen());
 
-/*----------------------------------------------------------------------------------------
-* Bot Storage: This is a great spot to register the private state storage for your bot. 
-* We provide adapters for Azure Table, CosmosDb, SQL Azure, or you can implement your own!
-* For samples and documentation, see: https://github.com/Microsoft/BotBuilder-Azure
-* ---------------------------------------------------------------------------------------- */
 
-// Create your bot with a function to receive messages from the user
+// Create bot part
 var bot = new builder.UniversalBot(connector, function (session) {
-    session.send("What do you mean by \" %s \" ?", session.message.text);
-});
+    session.send("What do you mean \" %s \" ?", session.message.text);
+    session.send("Don't talk to your mother like this!");
+})
+
+
+/*
+var bot = new builder.UniversalBot(connector), function (session) {
+    if (session.message.text) {
+        switch (session.message.text.toLowerCase()) {
+            case 'hello':
+                session.send("Hello, dear! How can Momma help you?");
+                break;
+            case 'how are you':
+                session.send("Oh my, let's not talk about me. I'm sure you need something. Tell me how can I help you?");
+                break;
+            default:
+                session.send("What do you mean \" %s \" ?", session.message.text);
+                break;
+            
+        }
+    }
+})
+*/
