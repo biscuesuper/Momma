@@ -8,6 +8,7 @@
 
 var restify = require('restify');
 var builder = require('botbuilder');
+var messages = require('./messages.json');
 
 // Setup Restify Server
 var server = restify.createServer();
@@ -29,57 +30,35 @@ var connector = new builder.ChatConnector({
 // Listen for messages from users 
 server.post('/api/messages', connector.listen());
 
-// Some string samples
-var answer_hello = "Hello, dear! How can Momma help you?";
-var answer_howareyou = "Oh my, let's not talk about me. I'm sure you need something. Tell me how can I help you?";
-var answer_food = "Sweet child, are you hungry? Momma can help you with that! What would you like to eat?";
-var answer_default = "What do you mean \" %s \" ?";
-
 // Create bot part
 var bot = new builder.UniversalBot(connector, function (session) {
     if (session.message.text) {
         switch (session.message.text.toLowerCase()) {
             // hello messages
             case 'hello':
-                session.send(answer_hello);
-                break;
             case 'hi':
-                session.send(answer_hello);
-                break;
             case 'good morning':
-                session.send(answer_hello);
+                session.send(messages.hello);
                 break;
 
             //how are you messages
             case 'how are you':
-                session.send(answer_howareyou);
-                break;
             case 'what are you doing':
-                session.send(answer_howareyou);
-                break;
             case 'what\'s upp':
-                session.send(answer_howareyou);
-                break;
             case 'how was your day':
-                session.send(answer_howareyou);
+                session.send(messages.howareyou);
                 break;
 
             //food
             case 'i want food':
-                session.send(answer_food);
-                break;
-            case 'i am hungry':
-                session.send(answer_food);
-                break;
-            case 'feed me':
-                session.send(answer_food);
-                break;
+            case 'i am hungry':  
+            case 'feed me':  
             case 'food':
-                session.send(answer_food);
+                session.send(messages.food);
                 break;
             //default
             default:
-                session.send(answer_default);
+                session.send(messages.default);
                 break;
 
         }
