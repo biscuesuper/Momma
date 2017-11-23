@@ -56,6 +56,13 @@ var bot = new builder.UniversalBot(connector, function (session) {
             case 'food':
                 session.send(messages.food);
                 break;
+
+            case 'cake':
+            case 'pie':
+            case 'candy':
+                session.send(messages.cake);
+
+
             //default
             default:
                 session.send(messages.default);
