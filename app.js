@@ -10,6 +10,7 @@ var restify = require('restify');
 var builder = require('botbuilder');
 var messages = require('./messages.json');
 var foodcard = require('./foodcard.json'); 
+var hello = require('./hello.json');
 
 // Setup Restify Server
 var server = restify.createServer();
@@ -56,9 +57,7 @@ var bot = new builder.UniversalBot(connector, function (session) {
             case 'feed me':  
             case 'food': {
                 session.send(messages.food);
-         //       var msg = new builder.Message(session).addAttachment(foodcard);
-                var attachment = session.message.attachments[0];
-                session.send(foodcard);
+                session.send(hello);
                 break;
                 }
             case 'cake':

@@ -1,0 +1,31 @@
+{
+  "type": "message",
+  "text": "What would you like to eat?",
+  "attachments": [
+    {
+      "contentType": "application/vnd.microsoft.card.adaptive",
+      "content": {
+        "type": "AdaptiveCard",
+        "version": "1.0",
+        "actions": [
+          {
+            "type": "Action.OpenUrl",
+            "url": "https://www.jamieoliver.com/recipes/category/course/healthy-snack-ideas/",
+            "title": "Snack"
+            
+          },
+          {
+            "type": "Action.OpenUrl",
+            "url": "https://www.jamieoliver.com/recipes/category/course/healthy-soup-recipes/",
+            "title": "Soup"
+          },
+          {
+            "type": "Action.OpenUrl",
+            "url": "https://www.jamieoliver.com/recipes/category/course/healthy-lunch-ideas/",
+            "title": "Lunch"
+          }
+        ]
+      }
+    }
+  ]
+}
