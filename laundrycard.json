@@ -10,7 +10,7 @@
           {
             "type": "Action.OpenUrl",
             "url": "https://www.wikihow.com/Do-Laundry",
-            "title": "Here's what you need to do."
+            "title": "First click me"
           }
         ]
       }

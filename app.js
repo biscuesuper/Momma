@@ -8,9 +8,10 @@
 
 var restify = require('restify');
 var builder = require('botbuilder');
+
+// My JSON files
 var messages = require('./messages.json');
 var foodcard = require('./foodcard.json'); 
-var hello = require('./hello.json');
 var laundrycard = require('./laundrycard.json');
 
 // Setup Restify Server
@@ -38,16 +39,30 @@ var bot = new builder.UniversalBot(connector, function (session) {
     if (session.message.text) {
         msg = session.message.text.toLowerCase();
 
+        // Case 'Hello'
         if (msg.match('hello')
             || msg.match('hi')
             || msg.match('good morning')
-            || msg.match('hey'))
+            || msg.match('hey')) {
             session.send(messages.hello);
+        }
 
+        // Case 'About the bot'
         else if (msg.match('you')
-            || (msg.match('what') && msg.match('up')))
+            || (msg.match('what') && msg.match('up'))) {
             session.send(messages.you);
+        }
 
+        // Case 'Something sweet' 
+        else if (msg.match('cake')
+            || msg.match('sweet')
+            || msg.match('candy')
+            || msg.match('chocolate')
+            || msg.match('pancakes')) {
+            session.send(messages.sweet);
+        }
+
+        // Case 'Food' + Adaptive card
         else if (msg.match('food')
             || msg.match('hungry')
             || msg.match('recipe')
@@ -57,20 +72,18 @@ var bot = new builder.UniversalBot(connector, function (session) {
             session.send(foodcard);
         }
 
-
-        else if (msg.match('cake')
-            || msg.match('sweet')
-            || msg.match('candy')
-            || msg.match('chocolate')
-            || msg.match('pancakes'))
-            session.send(messages.sweet);
-
+        // Case 'Laundry' + Adaptive card
         else if (msg.match('laundry')
-            || msg.match('wash') 
+            || msg.match('wash')
             || msg.match('clean')
-            || msg.match('clothes'))
-            session.send(messages.laundry), session.send(laundrycard);
+            || msg.match('clothes')) {
+            session.send(messages.laundry);
+            session.send(laundrycard);
+        }
 
-        else session.send(messages.default);
+        // Case 'Unknown'
+        else {
+            session.send(messages.default);
+        }
     }
 });
