@@ -40,10 +40,12 @@ var bot = new builder.UniversalBot(connector, function (session) {
 
         if (msg.match('hello')
             || msg.match('hi')
-            || msg.match('good morning'))
+            || msg.match('good morning')
+            || msg.match('hey'))
             session.send(messages.hello);
 
-        else if (msg.match('you'))
+        else if (msg.match('you')
+            || (msg.match('what') && msg.match('up')))
             session.send(messages.you);
 
         else if (msg.match('food')
