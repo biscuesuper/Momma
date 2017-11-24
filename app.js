@@ -10,6 +10,7 @@ var restify = require('restify');
 var builder = require('botbuilder');
 
 // My JSON files
+var appInfo = require('./appinfo.json');
 var messages = require('./messages.json');
 var foodcard = require('./foodcard.json'); 
 var laundrycard = require('./laundrycard.json');
@@ -21,8 +22,8 @@ server.listen(process.env.port || process.env.PORT || 3978, function () {
 });
   
 // Create chat connector for communicating with the Bot Framework Service
-var MicrosoftAppId = '221e4e95-3e5a-48f3-8390-2928b0854040'
-var MicrosoftAppPassword = 'xzosbaT72605(bGDJMXV;[]'
+var MicrosoftAppId = appInfo.appId;
+var MicrosoftAppPassword = appInfo.appPass;
 
 var connector = new builder.ChatConnector({
     appId: process.env.MicrosoftAppId,
