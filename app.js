@@ -9,7 +9,7 @@
 var restify = require('restify');
 var builder = require('botbuilder');
 
-// My JSON files
+// My JSON files : info + simple messages + cards
 var appInfo = require('./appinfo.json');
 var messages = require('./messages.json');
 var foodcard = require('./foodcard.json'); 
