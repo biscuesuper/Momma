@@ -52,8 +52,11 @@ var bot = new builder.UniversalBot(connector, function (session) {
             || msg.match('hungry')
             || msg.match('recipe')
             || msg.match('cook')
-            || msg.match('eat'))
-            session.send(messages.food), session.send(foodcard);
+            || msg.match('eat')) {
+            session.send(messages.food);
+            session.send(foodcard);
+        }
+
 
         else if (msg.match('cake')
             || msg.match('sweet')
