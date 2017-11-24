@@ -56,7 +56,18 @@ var bot = new builder.UniversalBot(connector, function (session) {
             case 'feed me':  
             case 'food': {
                 session.send(messages.food);
-                var msg = new builder.Message(session).addAttachment(foodcard);
+         //       var msg = new builder.Message(session).addAttachment(foodcard);
+                var attachment = session.message.attachments[0];
+                session.send({
+                    text: "You sent:",
+                    attachments: [
+                        {
+                            contentType: attachment.contentType,
+                            contentUrl: attachment.contentUrl,
+                            name: attachment.name
+                        }
+                    ]
+                });
                 break;
                 }
             case 'cake':
