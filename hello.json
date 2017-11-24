@@ -11,7 +11,6 @@
             "type": "Action.OpenUrl",
             "url": "https://www.jamieoliver.com/recipes/category/course/healthy-snack-ideas/",
             "title": "Snack"
-            
           },
           {
             "type": "Action.OpenUrl",

@@ -11,6 +11,7 @@ var builder = require('botbuilder');
 var messages = require('./messages.json');
 var foodcard = require('./foodcard.json'); 
 var hello = require('./hello.json');
+var laundrycard = require('./laundrycard.json');
 
 // Setup Restify Server
 var server = restify.createServer();
@@ -35,42 +36,36 @@ server.post('/api/messages', connector.listen());
 // Create bot part
 var bot = new builder.UniversalBot(connector, function (session) {
     if (session.message.text) {
-        switch (session.message.text.toLowerCase()) {
-            // hello messages
-            case 'hello':
-            case 'hi':
-            case 'good morning':
-                session.send(messages.hello);
-                break;
+        msg = session.message.text.toLowerCase();
 
-            //how are you messages
-            case 'how are you':
-            case 'what are you doing':
-            case 'what\'s upp':
-            case 'how was your day':
-                session.send(messages.howareyou);
-                break;
+        if (msg.match('hello')
+            || msg.match('hi')
+            || msg.match('good morning'))
+            session.send(messages.hello);
 
-            //food
-            case 'i want food':
-            case 'i am hungry':  
-            case 'feed me':  
-            case 'food': {
-                session.send(messages.food);
-                session.send(hello);
-                break;
-                }
-            case 'cake':
-            case 'pie':
-            case 'candy':
-                session.send(messages.cake);
-                break;
+        else if (msg.match('you'))
+            session.send(messages.you);
 
-            //default
-            default:
-                session.send(messages.default);
-                break;
+        else if (msg.match('food')
+            || msg.match('hungry')
+            || msg.match('recipe')
+            || msg.match('cook')
+            || msg.match('eat'))
+            session.send(messages.food), session.send(foodcard);
 
-        }
+        else if (msg.match('cake')
+            || msg.match('sweet')
+            || msg.match('candy')
+            || msg.match('chocolate')
+            || msg.match('pancakes'))
+            session.send(messages.sweet);
+
+        else if (msg.match('laundry')
+            || msg.match('wash') 
+            || msg.match('clean')
+            || msg.match('clothes'))
+            session.send(messages.laundry), session.send(laundrycard);
+
+        else session.send(messages.default);
     }
 });

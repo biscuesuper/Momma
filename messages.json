@@ -1,7 +1,8 @@
 {
-  "cake": "I'm sure you don't need that. You're sweet enough",
+  "sweet": "I'm sure you don't need that. You're sweet enough.",
   "default": "What do you mean?",
   "food": "Sweet child, are you hungry? Momma can help you with that! What would you like to eat?",
   "hello": "Hello, dear! How can Momma help you?",
-  "howareyou": "Oh my, let's not talk about me. I'm sure you need something. Tell me how can I help you?"
+  "you": "Oh my, let's not talk about me. I'm sure you need something. Tell me how can I help you?",
+  "laundry": "Laundry?! Well that's easy!"
 }

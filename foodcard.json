@@ -1,30 +1,29 @@
 {
-  "type": "AdaptiveCard",
-  "version": "1.0",
-  "body": [
+  "type": "message",
+  "attachments": [
     {
-      "type": "TextBlock",
-      "text": "What would you like to eat?",
-      "wrap": true
-    },
-    {
-      "type": "ImageSet",
-      "imageSize": "medium",
-      "images": [
-        {
-          "type": "Image",
-          "url": "http://contososcubabot.azurewebsites.net/assets/steak.jpg"
-        },
-        {
-          "type": "Image",
-          "url": "http://contososcubabot.azurewebsites.net/assets/chicken.jpg"
-        },
-        {
-          "type": "Image",
-          "url": "http://contososcubabot.azurewebsites.net/assets/tofu.jpg"
-        }
-      ]
+      "contentType": "application/vnd.microsoft.card.adaptive",
+      "content": {
+        "type": "AdaptiveCard",
+        "version": "1.0",
+        "actions": [
+          {
+            "type": "Action.OpenUrl",
+            "url": "https://www.jamieoliver.com/recipes/category/course/healthy-snack-ideas/",
+            "title": "Snack"       
+          },
+          {
+            "type": "Action.OpenUrl",
+            "url": "https://www.jamieoliver.com/recipes/category/course/healthy-soup-recipes/",
+            "title": "Soup"
+          },
+          {
+            "type": "Action.OpenUrl",
+            "url": "https://www.jamieoliver.com/recipes/category/course/healthy-lunch-ideas/",
+            "title": "Lunch"
+          }
+        ]
+      }
     }
   ]
 }
- 
